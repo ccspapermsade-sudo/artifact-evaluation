@@ -1,0 +1,39 @@
+# Core
+numpy
+pandas
+scipy
+matplotlib
+seaborn
+opencv-python
+Pillow
+tqdm
+PyYAML
+
+# Deep learning / YOLOv5
+torch
+torchvision
+torchaudio
+ultralytics
+
+# YOLOv5 dependencies
+requests
+psutil
+thop
+tensorboard
+gitpython
+
+# Tracking / SORT
+filterpy
+scikit-image
+lap
+
+# Reinforcement learning
+gymnasium
+stable-baselines3
+
+# nuScenes / AV data
+nuscenes-devkit
+pyquaternion
+
+# Utilities
+shapely
