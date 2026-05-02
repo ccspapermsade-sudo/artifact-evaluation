@@ -8,7 +8,7 @@ Before running the commands, update the paths below according to your local envi
 export PROJECT_DIR=/path/to/artifact-evaluation
 export YOLOV5_DIR=/path/to/yolov5
 export SORT_DIR=/path/to/sort
-export TILES_DIR=/path/to/stop_variants_bright1
+export TILES_DIR=/path/to/stop_sign_samples
 export WEIGHTS=yolov5s.pt
 export DEVICE=0
 
@@ -30,7 +30,7 @@ python dosonbatchcustumresolutiondttracking.py
 ## 2. RL Pattern Generation: Full Reward
 
 ```bash
-python ${YOLOV5_DIR}/modified_remove_rcount_rsched_rplace_bestcodedonotsavingimage.py \
+python ${YOLOV5_DIR}/train_and_eval.py \
   --tiles_dir ${TILES_DIR} \
   --weights ${WEIGHTS} \
   --device ${DEVICE} \
@@ -68,7 +68,7 @@ python ${YOLOV5_DIR}/modified_remove_rcount_rsched_rplace_bestcodedonotsavingima
 Use the trained checkpoint from the full-reward run and run evaluation mode.
 
 ```bash
-python ${YOLOV5_DIR}/modified_remove_rcount_rsched_rplace_bestcodedonotsavingimage.py \
+python ${YOLOV5_DIR}/train_and_eval.py \
   --tiles_dir ${TILES_DIR} \
   --weights ${WEIGHTS} \
   --device ${DEVICE} \
@@ -101,7 +101,7 @@ python ${YOLOV5_DIR}/modified_remove_rcount_rsched_rplace_bestcodedonotsavingima
 If your evaluation script requires a checkpoint argument, use the trained checkpoint explicitly, for example:
 
 ```bash
-python ${YOLOV5_DIR}/modified_remove_rcount_rsched_rplace_bestcodedonotsavingimage.py \
+python ${YOLOV5_DIR}/train_and_eval.py \
   --eval_mode \
   --checkpoint ${OUT_ROOT}/rl_full_reward/checkpoints/best_model.zip \
   --tiles_dir ${TILES_DIR} \
@@ -175,7 +175,7 @@ All baselines use the same detector, camera-plane geometry, placement budget, an
 
 ```bash
 python ${YOLOV5_DIR}/heuristic_baseline_camera_eval.py \
-  --rl_py ${YOLOV5_DIR}/modified_remove_rcount_rsched_rplace.py \
+  --rl_py ${YOLOV5_DIR}/train_and_eval.py \
   --tiles_dir ${TILES_DIR} \
   --weights ${WEIGHTS} \
   --device ${DEVICE} \
@@ -212,7 +212,7 @@ python ${YOLOV5_DIR}/heuristic_baseline_camera_eval.py \
 
 ```bash
 python ${YOLOV5_DIR}/random_search_with_budget_camera_eval.py \
-  --rl_py ${YOLOV5_DIR}/modified_remove_rcount_rsched_rplace.py \
+  --rl_py ${YOLOV5_DIR}/train_and_eval.py \
   --tiles_dir ${TILES_DIR} \
   --weights ${WEIGHTS} \
   --device ${DEVICE} \
@@ -245,7 +245,7 @@ python ${YOLOV5_DIR}/random_search_with_budget_camera_eval.py \
 
 ```bash
 python ${YOLOV5_DIR}/random_baseline_camera_eval.py \
-  --rl_py ${YOLOV5_DIR}/modified_remove_rcount_rsched_rplace.py \
+  --rl_py ${YOLOV5_DIR}/train_and_eval.py \
   --tiles_dir ${TILES_DIR} \
   --weights ${WEIGHTS} \
   --device ${DEVICE} \
@@ -279,5 +279,3 @@ python ${YOLOV5_DIR}/random_baseline_camera_eval.py \
 ## Notes
 
 - Replace all placeholder paths, such as `/path/to/yolov5`, with the correct local paths before running.
-- The commands above avoid absolute personal paths so that the artifact remains anonymous.
-- The full dataset is not included in this repository. Use the dataset organization described in `README.md`.
